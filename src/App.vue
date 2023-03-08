@@ -1,17 +1,13 @@
 <template>
-  <div class="demo-image__preview">
-    <el-image style="width: 100px; height: 100px" :zoom-rate="1.2" :preview-src-list="imageList" :initial-index="0"
-      fit="cover" />
-  </div>
-  <el-upload v-model:file-list="imageList" action="https://localhost:9998/upload" list-type="picture-card"
-    :on-preview="handlePictureCardPreview" :on-remove="handleRemove">
+  <el-upload v-model:file-list="imageList" action="http://localhost:9998/upload" list-type="picture-card"
+    :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-success="handleSuccess" name="image">
     <el-icon>
       <Plus />
     </el-icon>
   </el-upload>
 
-  <el-dialog v-model="dialogVisible">
-    <img w-full :src="dialogImageUrl" alt="Preview Image" />
+  <el-dialog v-model="dialogVisible" :fullscreen="true">
+    <img fit="contain" :src="dialogImageUrl" alt="Preview Image" />
   </el-dialog>
 </template>
 
@@ -45,4 +41,8 @@ const handlePictureCardPreview: UploadProps["onPreview"] = (uploadFile) => {
   dialogImageUrl.value = uploadFile.url!;
   dialogVisible.value = true;
 };
+
+const handleSuccess:UploadProps["onSuccess"]=(response: any)=>{
+  updateImageList([{name:"", url:response.imageUrl}])
+}
 </script>
