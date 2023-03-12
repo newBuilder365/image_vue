@@ -5,7 +5,7 @@ import axios, {
 } from 'axios'
 
 const request: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:9998',
+  baseURL: 'http://114.116.22.167:9998',
   timeout: 5000
 })
 

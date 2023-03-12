@@ -1,5 +1,5 @@
 <template>
-  <el-upload v-model:file-list="imageList" action="http://localhost:9998/upload" list-type="picture-card"
+  <el-upload v-model:file-list="imageList" action="http://114.116.22.167:9998/upload" list-type="picture-card"
     :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-success="handleSuccess" name="image">
     <el-icon>
       <Plus />
